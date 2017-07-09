@@ -1,7 +1,7 @@
 class BaseElement extends HTMLElement {
   constructor () {
     super();
-    this._shadow = this.attachShadow({mode: 'open'});
+    this._shadow = this.attachShadow({mode: 'closed'});
     this._doc = document.currentScript && document.currentScript.ownerDocument || document;
 
     //repaint children

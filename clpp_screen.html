@@ -1,6 +1,7 @@
 <template id="control-bar">
   <style type="text/css">
-    div {
+    ._controlbar {
+      cursor: pointer;
       color: #fff;
       width: 100%;
       height: 40px;
@@ -9,25 +10,28 @@
       background-color: rgba(0, 0, 0, 0.5);
     }
   </style>
-  <div>play / volume / progress / tracks</div>
+  <div class="_controlbar">play / volume / progress / tracks</div>
 </template>
 
 <template id="area">
   <style type="text/css">
-    div {
+    ._area {
+      top: 0px;
+      left: 0px;
+      position: absolute;
       width: 100%;
       height: 100%;
       background-color: #888;
     }
   </style>
-  <div></div>
+  <div class="_area"></div>
 </template>
 
 <style type="text/css">
   clpp-screen {
     position: relative;
     display: block;
-    background-color: #ccc;
+    background-color: red;
     /*overflow: hidden;*/
     outline: 2px solid #333;
   }
