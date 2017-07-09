@@ -1,0 +1,48 @@
+<style type="text/css">
+  my-element {
+    display: block;
+    width: 200px;
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+</style>
+
+<script type="text/javascript">
+
+class MyElement extends BaseElement {
+  constructor() {
+    super();
+    this.init();
+  }
+
+  static get observedAttributes () {
+    return ['name', 'title', 'controls', 'span'];
+  }
+
+  attributeChangedCallback (attr, oldValue, newValue) {
+    switch(attr) {
+      case 'name':
+        console.log('name changed from %s to %s', oldValue, newValue);
+        break;
+      case 'title':
+        // var h1 = this.createEl('span', {textContent: newValue});
+        // this.append(h1);
+        break;
+      case 'controls':
+        console.log('CONTROLES');
+        break;
+      default:
+        console.log('not handled', attr);
+    }
+  }
+
+  init () {
+
+  }
+}
+
+customElements.define('my-element', MyElement);
+</script>

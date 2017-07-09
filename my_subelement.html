@@ -1,0 +1,37 @@
+<style type="text/css">
+</style>
+
+<script type="text/javascript">
+
+class MySubElement extends BaseElement {
+  constructor() {
+    super();
+    this.init();
+  }
+
+  static get observedAttributes() {
+    return ['name'];
+  }
+
+  attributeChangedCallback(attr, oldValue, newValue) {
+    var child;
+    if (attr === 'name') {
+      child = this._shadow.querySelector('div');
+      child.textContent = newValue;
+    }
+  }
+
+  init () {
+    var button = this.createEl('div', {
+      textContent: 'Ok'
+    }, {
+      color: 'green',
+      backgroundColor: 'yellow',
+      padding: '0px'
+    });
+    this.append(button);
+  }
+}
+
+customElements.define('my-subelement', MySubElement);
+</script>
