@@ -2,7 +2,7 @@ class BaseElement extends HTMLElement {
   constructor () {
     super();
     this._shadow = this.attachShadow({mode: 'open'});
-    this._doc = document.currentScript && document.currentScript.ownerDocument;
+    this._doc = document.currentScript && document.currentScript.ownerDocument || document;
 
     //repaint children
     this.appendChildren();
@@ -52,7 +52,7 @@ class BaseElement extends HTMLElement {
     el = this._doc.querySelector(id);
 
     if (el) {
-      return el.cloneNode();
+      return document.importNode(el.content, true);
     } else {
       return null;
     }

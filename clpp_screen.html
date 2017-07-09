@@ -1,0 +1,65 @@
+<template id="control-bar">
+  <style type="text/css">
+    div {
+      color: #fff;
+      width: 100%;
+      height: 40px;
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+  <div>play / volume / progress / tracks</div>
+</template>
+
+<template id="area">
+  <style type="text/css">
+    div {
+      width: 100%;
+      height: 100%;
+      background-color: #888;
+    }
+  </style>
+  <div></div>
+</template>
+
+<style type="text/css">
+  clpp-screen {
+    position: relative;
+    display: block;
+    background-color: #ccc;
+    /*overflow: hidden;*/
+    outline: 2px solid #333;
+  }
+</style>
+
+<script type="text/javascript">
+  class ClppScreen extends BaseElement {
+    constructor() {
+      super();
+      this.init();
+    }
+
+    init () {
+      this._videoArea = this.getTemplate('area');
+      this.append(this._videoArea);
+      this._controlBar = this.getTemplate('control-bar');
+      this.append(this._controlBar);
+    }
+
+    static get observedAttributes () {
+      return ['width', 'height'];
+    }
+
+    attributeChangedCallback (attr, oldValue, newValue) {
+      if (attr === 'width') {
+        this.style.width = newValue;
+      }
+      if (attr === 'height') {
+        this.style.height = newValue;
+      }
+    }
+  }
+
+  customElements.define('clpp-screen', ClppScreen);
+</script>
