@@ -1,7 +1,7 @@
 class BaseElement extends HTMLElement {
   constructor () {
     super();
-    this._shadow = this.attachShadow({mode: 'closed'});
+    this._shadowRoot = this.attachShadow({mode: 'open'});
     this._doc = document.currentScript && document.currentScript.ownerDocument || document;
 
     //repaint children
@@ -41,7 +41,7 @@ class BaseElement extends HTMLElement {
   }
 
   append (element) {
-    this._shadow.appendChild(element);
+    this._shadowRoot.appendChild(element);
   }
 
   getTemplate(id) {
